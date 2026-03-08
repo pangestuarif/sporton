@@ -26,9 +26,13 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-EXPOSE 3000
+EXPOSE 80
 
-# API_URL_INTERNAL bisa di-set runtime
+# Tambahkan baris ini agar Next.js tahu harus jalan di port 80
+ENV PORT 80
+ENV HOSTNAME "0.0.0.0"
+
+# API_URL_INTERNAL tetap bisa di-set runtime
 ENV API_URL_INTERNAL=""
 ENV API_URL_INTERNAL_ROOT=""
 
